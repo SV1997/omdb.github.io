@@ -5,7 +5,7 @@ const toggleArrow = document.getElementById("arrow");
 const topdrawyer = document.getElementById("toggle");
 const menu = document.getElementById("menu");
 const closemenu = document.getElementById("closeshow");
-const OMDB_URL = "https://www.omdbapi.com/?apikey=f32f4be4";
+const OMDB_URL = "https://www.omdbapi.com/?apikey=9dea3e84";
 const parameters = document.querySelectorAll(".dropdown span");
 const toggleleft = document.querySelector("#toggleleft");
 const toggleright = document.querySelector("#toggleright");
