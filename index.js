@@ -417,6 +417,3 @@ document.addEventListener('mouseout',function(e){
   }
 })
 // generate and move random images 
-setInterval(function(){
-Randomimages();
-},20000)
