@@ -52,7 +52,7 @@ function dropdownValue (e) {
         obj.params = "s";
         obj.type = "";
       }
-      console.log(obj);
+      //console.log(obj);
     });
   }}
 ;
@@ -71,7 +71,7 @@ function insertImages(imageData) {
 </div>
 </div>
 `;
-  console.log(div);
+  //console.log(div);
   div.classList.add("slides");
   div.id = "slide" + currentslide;
   document.getElementById("innershow").append(div);
@@ -81,7 +81,7 @@ function insertImages(imageData) {
 }
 // help in right slide of Random images
 function sliderabc(){
-    console.log(currentpos);
+    //console.log(currentpos);
     let current = document.querySelectorAll(".slides");
     let currentslider=document.getElementById("slide"+currentslide);
     let px=currentpos;
@@ -99,11 +99,11 @@ function sliderabc(){
 }
 // shift the images to left side
 function shiftleft(){
-    // console.log(currentslide);
+    // //console.log(currentslide);
     let current = document.querySelectorAll(".slides");
     let currentslider=document.getElementById("slide"+currentslide);
     let px = currentpos;
-    console.log(px);
+    //console.log(px);
     let movement = setInterval(function () {
       px--;
       for (let i = 0; i < current.length; i++) {
@@ -129,7 +129,7 @@ menu.addEventListener("click", function () {
 closemenu.addEventListener("click", function () {
   topdrawyer.classList.remove("show");
 });
-// console.log(parameterSelector);
+// //console.log(parameterSelector);
 // generate random url
 function parameterSelector() {}
 function createrandomurl() {
@@ -150,17 +150,17 @@ function Randomimages() {
     })
     .then((user) => {
       if (user.Poster != "N/A" && user.Response != "False") {
-        console.log(user);
+        //console.log(user);
         let run = insertImages(user);
         if(run!=1){
         sliderabc();
         }
-        console.log("in");
+        //console.log("in");
       } else {
         ret = Randomimages();
       }
-      console.log(user);
-      console.log(user.Poster === "N/A");
+      //console.log(user);
+      //console.log(user.Poster === "N/A");
     });
   return ret;
 }
@@ -190,10 +190,10 @@ function addTostorage(id){
   })
   let imageid=document.getElementById(id);
   let imgad=id1[0].data.Poster;
-  console.log(imageid);
+  //console.log(imageid);
   urls.push(id1[0]);
   ids.push(id);
-  console.log(id1[0]);
+  //console.log(id1[0]);
   localStorage.setItem(id,JSON.stringify(id1[0]));
   displayfav();
 }
@@ -202,7 +202,7 @@ function addToFav(){
 let keys=Object.keys(localStorage);
 for(let i=0;i<keys.length-1;i++){
   let url=localStorage.getItem(keys[i+1]); 
-  console.log(url);
+  //console.log(url);
   urls.push(JSON.parse(url));
   ids.push(keys[i+1]);
 }
@@ -211,9 +211,9 @@ displayfav();
 // show favourite movie on DOM
 function displayfav(){
   favdiv.innerHTML="";
-  console.log(urls)
+  //console.log(urls)
   for(let i=0;i<ids.length;i++){
-    console.log(urls[i], ids[i]);
+    //console.log(urls[i], ids[i]);
   let setfav=document.createElement("img");
   let del=document.createElement('span');
   del.innerHTML=`
@@ -236,7 +236,7 @@ function searchSpecific(){
     fetch(realurl).then((response)=>{
      return response.json();
     }).then((user)=>{
-      console.log(user)
+      //console.log(user)
       let div=document.createElement('div');
       searchResult.innerHTML="";
       div.innerHTML=`Total number of results found ${user.totalResults}`;
@@ -266,7 +266,7 @@ matches=parseInt(matches);
             let url1=urls.filter(function(url1){
   return url1!=url;
 })
-console.log(url1)
+//console.log(url1)
 let id1=ids.filter(function(id1){
   return id1!=id;
 })
@@ -284,22 +284,22 @@ function aside(){
   for(let i=0;i<3;i++){
     aside1[i]=document.querySelector("#slide"+(currentslide-2+i)+" img");
   }
-  console.log(aside1);
-  console.log(document.getElementById("slide"+currentslide))
-  console.log(currentslide)
+  //console.log(aside1);
+  //console.log(document.getElementById("slide"+currentslide))
+  //console.log(currentslide)
   if(aside1[0]){
     let source1=aside1[0].getAttribute("src");
-    console.log(source1);
+    //console.log(source1);
     document.getElementById("aside1").setAttribute("src",source1);
   }
   if(aside1[1]){
     let source1=aside1[1].getAttribute("src");
-    console.log(source1);
+    //console.log(source1);
     document.getElementById("aside2").setAttribute("src",source1);
   }
   if(aside1[2]){
     let source1=aside1[2].getAttribute("src");
-    console.log(source1);
+    //console.log(source1);
     document.getElementById("aside3").setAttribute("src",source1);
   }
 }
@@ -309,7 +309,7 @@ function extendedinfo(info){
   let det=document.getElementById("details");
   det.innerHTML="";
   let div1=document.createElement('div');
-  console.log(info[0])
+  //console.log(info[0])
   div1.innerHTML=`
   <div><img class="resultsimage" src="${info[0].data.Poster}"/></div>
   <div>Title:${info[0].data.Title}</div>
@@ -318,14 +318,14 @@ function extendedinfo(info){
   <div>Runtime:${info[0].data.Runtime}</div>
   <div>Plot:${info[0].data.Plot}</div>
   <span class="close">X</span>`
-  // console.log(div1);
+  // //console.log(div1);
   det.append(div1);
   let px=0;
   ext.style.left=-100+"%";
   let movement=setInterval(function(){
     px=parseInt(ext.style.left);
     px++;
-    console.log(ext.style.left);
+    //console.log(ext.style.left);
     ext.style.left=px+"%"
     if(px>=0){
       clearInterval(movement);
@@ -339,7 +339,7 @@ function collapseinfo(){
   let movement=setInterval(function(){
     px=parseInt(ext.style.left);
     px--;
-    console.log(ext.style.left);
+    //console.log(ext.style.left);
     ext.style.left=px+"%"
     if(px<=-100){
       clearInterval(movement);
@@ -353,16 +353,16 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 // catch click event
 document.addEventListener("click", function (e) {
-  console.log(e.target.className);
+  //console.log(e.target.className);
   if (e.target.className == "fa-solid fa-chevron-right fa-4x") {
-  console.log(presentslide, currentslide)
+  //console.log(presentslide, currentslide)
     presentslide++;
     if(presentslide<currentslide){
-      console.log("current")
+      //console.log("current")
       sliderabc();
     }
     else{
-      console.log("random")
+      //console.log("random")
       Randomimages();
     }
   }
@@ -380,11 +380,11 @@ document.addEventListener("click", function (e) {
     shiftleft();
   }
   if(e.target.id=='find'){
-    console.log("search")
+    //console.log("search")
     searchSpecific();
   }
   if(e.target.id=='btn'){
-    console.log("dropdown")
+    //console.log("dropdown")
     dropdownValue(e);
   }
   if(e.target.className=="fa-regular fa-heart"){
@@ -394,7 +394,7 @@ document.addEventListener("click", function (e) {
   if(e.target.className=="fa-solid fa-trash"){
     let id=e.target.dataset.id;
     let url=document.getElementById(id);
-    console.log(url);
+    //console.log(url);
     deletefav(id,url);
     localStorage.removeItem(e.target.dataset.id);
   }
@@ -404,14 +404,14 @@ document.addEventListener("click", function (e) {
 });
 // mouseover event catch
 document.addEventListener('mouseover',function(e){
-  // console.log(e.target.className);
+  // //console.log(e.target.className);
   if(e.target.className==="fa-solid fa-play fa-6x playrandom"){
     document.querySelector(".shadowmain i").style.color="yellow";
   }
 })
 // mouseout event catch
 document.addEventListener('mouseout',function(e){
-  // console.log(e.target.className);
+  // //console.log(e.target.className);
   if(e.target.className==="fa-solid fa-play fa-6x playrandom"){
     document.querySelector(".shadowmain i").style.color="white";
   }
